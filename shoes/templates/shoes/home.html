@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% regroup shoes by releaseDate|date:"M" as shoe_dates %}
+    {% for date in shoe_dates %}
+        <div>
+            <h3 class="card__drop-month"><b>{{ date.grouper }} drop</b></h3>
+            {% for shoe in date.list %}
+                <div class="card">
+                    <div class="card__inner">
+                        <img class="card__image" src="{{ shoe.image.url }} "
+                             alt="{{ shoe.brand }} {{ shoe.title }} shoe"
+                             onclick="window.location= '{% url 'detail' shoe.id %}';">
+                        <div class="card__shoe-details">
+                            <span class="card__shoe-brand"
+                                  onclick="window.location= '{% url 'detail' shoe.id %}';">{{ shoe.brand }}</span>
+                            <h3 class="shoe__shoe-title"
+                                onclick="window.location= '{% url 'detail' shoe.id %}';">{{ shoe.title }}</h3>
+                            <span class="material-icons-outlined card__share" >link</span>
+                        </div>
+                        <div class="card__date" onclick="window.location= '{% url 'detail' shoe.id %}';">
+                            <span>{{ shoe.releaseDate | date:'jS' }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        {#        <div>{{ shoe.title }}</div><br>#}
+        {#        <div>{{ shoe.brand }}</div>#}
+        {#        <img src="{{ shoe.image.url }}" alt="">#}
+
+    {% endfor %}
+
+
+
+<label for="input"></label>
+    <input id="input" type="text" value=''/>
+
+
+
+<button id="copy">Copy</button>
+<script>
+    function copy() {
+  var copyText = document.getElementById('input');
+  copyText.select();
+  document.execCommand("copy");
+}
+
+document.querySelector("#copy").addEventListener("click", copy);
+</script>
+
+
+
+{% endblock %}
