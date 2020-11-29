@@ -1,10 +1,54 @@
 @import "../utilities/variables";
 @import "../base/typography";
 
-.home-nav {
+.nav__wrapper {
   background: white;
+}
+.nav__home {
+  background: white;
+  max-width: 1100px;
+  margin: 0 auto;
+
 }
 
 body {
   font-family: $default-font;
+}
+
+
+.page-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto max-content;
+}
+
+.content-wrap {
+  min-height: 100vh;
+
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight:$text-weight-7;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+.footer__twitter-icon svg {
+  height: 24px;
+  width: 24px;
+
+}
+
+.footer_point-right, .footer__mail {
+  font-size: 1.5rem;
+}
+
+.footer__social-icons {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+
 }

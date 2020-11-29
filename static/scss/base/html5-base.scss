@@ -11,8 +11,10 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+@import "../base/typography.scss";
+@import "../utilities/variables.scss";
+
 html {
-  color: #222;
   font-size: 1em;
   line-height: 1.4;
   height: 100%;
@@ -20,10 +22,17 @@ html {
 
 body {
     margin: 0;
-    min-height: 100%;
     position: relative;
     min-width: 300px;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    //color: rgba(0,0,0,0.8);
+    color: #071c35;
+    min-height: 100vh;
+  font-weight:$text-weight-4;
 }
+
 
 
 /*

@@ -7,6 +7,7 @@
 //components
 @import "scss/components/buttons";
 @import "scss/components/cards";
+@import "scss/components/swiper";
 
 //layout
 @import "scss/layout/footer";
@@ -15,10 +16,14 @@
 @import "scss/layout/header";
 @import "scss/layout/navigations";
 @import "scss/layout/sidebar";
+@import "scss/layout/desktop";
+
 
 //pages
 @import "scss/pages/signup";
 @import "scss/pages/base";
+@import "scss/pages/detail";
+
 
 //themes
 @import "scss/themes/theme";

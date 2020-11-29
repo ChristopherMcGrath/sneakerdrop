@@ -1,16 +1,26 @@
 
-//copy to clip
-function myFunction() {
-  var copyText = document.getElementById("myInput");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
-  document.execCommand("copy");
 
-  var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copied: " + copyText.value;
+//copy to clipboard
+
+function CopyToClipboard(id)
+{
+const r = document.createRange();
+r.selectNode(document.getElementById(id));
+window.getSelection().removeAllRanges();
+window.getSelection().addRange(r);
+document.execCommand('copy');
+window.getSelection().removeAllRanges();
+console.log()
 }
 
-function outFunc() {
-  var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copy to clipboard";
-}
+
+//tippy
+
+tippy('#myButton', {
+    content: 'Copy URL',
+    placement: 'top-start',
+    arrow: false,
+    animation: 'scale',
+});
+
+

@@ -7,7 +7,7 @@
     background: white;
     position: sticky;
     padding: 20px 20px 20px 20px;
-  margin-bottom: 4rem;
+
 }
 
 .nav__home h1 {
@@ -24,11 +24,12 @@
 .home__subscribe {
   position: absolute;
   right: 1rem;
+  font-weight: 400;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding: .1rem .5rem;
 }
 
 
 
-.swiper-container {
-    //width: 600px;
-    height: 300px;
-}
+

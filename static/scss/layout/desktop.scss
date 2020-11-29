@@ -1,7 +1,29 @@
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
+  //560px
 
-  .button {
-    color: blue;
+  // cards
+
+  .card__shoe-brand {
+      font-size: 1.25rem;
+  }
+    .card {
+      border-radius: 0.625rem;
+    }
+    .card__image {
+      width: 125px;
+      height: 125px;
+    }
+  .shoe__shoe-title {
+    font-size: 1.25rem;
+  }
+  .details__count-title {
+  display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto max-content;
+
+  }
+  .details__countdown-wrapper{
+    left: 0;
   }
 }
