@@ -1,57 +1,66 @@
 {% extends "base.html" %}
 
+{# to be released #}
 {% block content %}
-
-    {% regroup shoes by releaseDate|date:"M" as shoe_dates %}
-    {% for date in shoe_dates %}
+    <div class="card__wrapper">
         <div>
-            <h3 class="card__drop-month"><b>{{ date.grouper }} drop</b></h3>
-            {% for shoe in date.list %}
+            {% if shoes_release %}
+                <h2 class="card__drop-month"><b>Just Dropped</b></h2>
+            {% endif %}
+            {% for shoe in shoes_release %}
                 <div class="card">
                     <div class="card__inner">
-                        <img class="card__image" src="{{ shoe.image.url }} "
-                             alt="{{ shoe.brand }} {{ shoe.title }} shoe"
-                             onclick="window.location= '{% url 'detail' shoe.id %}';">
+                        <img class="card__image" src=" {{ shoe.first_image.image.url }} "
+                                 alt="{{ shoe.brand }} {{ shoe.title }} shoe"
+                                 onclick="window.location= '{% url 'detail' shoe.id %}';">
                         <div class="card__shoe-details">
-                            <span class="card__shoe-brand"
-                                  onclick="window.location= '{% url 'detail' shoe.id %}';">{{ shoe.brand }}</span>
+                        <span class="card__shoe-brand"
+                              onclick="window.location= '{% url 'detail' shoe.id %}';">{{ shoe.brand }}</span>
                             <h3 class="shoe__shoe-title"
                                 onclick="window.location= '{% url 'detail' shoe.id %}';">{{ shoe.title }}</h3>
-                            <span class="material-icons-outlined card__share" >link</span>
+                            <span id="myButton" class="material-icons-outlined card__share"
+                                  onclick="CopyToClipboard('{{ shoe.id }}');return false;">link</span>
+                            <span id="{{ shoe.id }}"
+                                  class="sr-only">{{ request.build_absolute_uri }}sneakers/{{ shoe.id }}</span>
                         </div>
-                        <div class="card__date" onclick="window.location= '{% url 'detail' shoe.id %}';">
-                            <span>{{ shoe.releaseDate | date:'jS' }}</span>
+                        <div class="card__to-details" onclick="window.location= '{% url 'detail' shoe.id %}';">
+                            <span class="material-icons">arrow_right_alt</span>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
 
-
-        {#        <div>{{ shoe.title }}</div><br>#}
-        {#        <div>{{ shoe.brand }}</div>#}
-        {#        <img src="{{ shoe.image.url }}" alt="">#}
-
-    {% endfor %}
-
-
-
-<label for="input"></label>
-    <input id="input" type="text" value=''/>
-
-
-
-<button id="copy">Copy</button>
-<script>
-    function copy() {
-  var copyText = document.getElementById('input');
-  copyText.select();
-  document.execCommand("copy");
-}
-
-document.querySelector("#copy").addEventListener("click", copy);
-</script>
-
-
+        {% regroup shoes_not_released by releaseDate|date:"M" as shoes_not_released %}
+        {% for date in shoes_not_released %}
+            <div>
+                <h2 class="card__drop-month"><b>{{ date.grouper }} drop</b></h2>
+                {% for shoe in date.list %}
+                    <div class="card">
+                        <div class="card__inner">
+                                <img class="card__image" src=" {{ shoe.first_image.image.url }} "
+                                 alt="{{ shoe.brand }} {{ shoe.title }} shoe"
+                                 onclick="window.location= '{% url 'detail' shoe.id %}';">
+                            <div class="card__shoe-details">
+                            <span class="card__shoe-brand"
+                                  onclick="window.location= '{% url 'detail' shoe.id %}';">{{ shoe.brand }}</span>
+                                <h3 class="shoe__shoe-title"
+                                    onclick="window.location= '{% url 'detail' shoe.id %}';">{{ shoe.title }}</h3>
+                                <span id="myButton" class="material-icons-outlined card__share"
+                                      onclick="CopyToClipboard('{{ shoe.id }}');return false;">link</span>
+                                <span id="{{ shoe.id }}"
+                                      class="sr-only">{{ request.build_absolute_uri }}shoes/{{ shoe.id }}</span>
+                            </div>
+                            <div class="card__date" onclick="window.location= '{% url 'detail' shoe.id %}';">
+                                <span>{{ shoe.releaseDate | date:'jS' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}
+
+{#use first of function for image#}

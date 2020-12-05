@@ -793,6 +793,7 @@ h3 {
   border: 1px solid #ddd;
   border-radius: 1rem;
   padding: 0.1rem 0.5rem;
+  color: #071c35;
 }
 
 @media only screen and (min-width: 35em) {
@@ -861,6 +862,13 @@ body {
 .footer__twitter-icon svg {
   height: 24px;
   width: 24px;
+  padding-left: 0.3rem;
+}
+
+.footer__instagram-icon svg {
+  height: 24px;
+  width: 24px;
+  padding-right: 0.3rem;
 }
 
 .footer_point-right, .footer__mail {

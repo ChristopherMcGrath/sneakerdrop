@@ -40,8 +40,16 @@ body {
 .footer__twitter-icon svg {
   height: 24px;
   width: 24px;
-
+  padding-left: .3rem;
 }
+
+.footer__instagram-icon svg {
+  height: 24px;
+  width: 24px;
+  padding-right: .3rem;
+}
+
+
 
 .footer_point-right, .footer__mail {
   font-size: 1.5rem;

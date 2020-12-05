@@ -1,73 +1,68 @@
 {% extends "base.html" %}
-
+{% load humanize %}
 
 
 
 {% block content %}
-
-    <style>
-        html,
-        body {
-            position: relative;
-
-        }
-
-        body {
-            background: #eee;
-            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-            font-size: 14px;
-            color: #000;
-            margin: 0;
-            padding: 0;
-        }
-
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-        }
-
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-        {#background: #fff;#}
-
-            /* Center slide text vertically */
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            -webkit-align-items: center;
-            align-items: center;
-        }
-    </style>
-
-
-    <body>
     <!-- Swiper -->
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img class="card__image" src="{{ shoe.image.url }}" alt=""></div>
-            <div class="swiper-slide"><img class="card__image" src="{{ shoe.image.url }}" alt=""></div>
-            <div class="swiper-slide"><img class="card__image" src="{{ shoe.image.url }}" alt=""></div>
-            <div class="swiper-slide"><img class="card__image" src="{{ shoe.image.url }}" alt=""></div>
-            <div class="swiper-slide"><img class="card__image" src="{{ shoe.image.url }}" alt=""></div>
+    <div class="details__wrapper">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for image in shoe.shoeimage_set.all %}
+                    <div class="swiper-slide "><img class="slider_card" src="{{ image.image.url }}"
+                                                    alt="{{ shoe.brand }} {{ shoe.title }} shoe"></div>
+                {% endfor %}
+            </div>
+            <!--Pagination-->
+            <div class="swiper-pagination"></div>
 
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
 
-    {{ shoe.brand }}<br>
-    {{ shoe.title }}
-    <div>count down timer</div>
+        <div class="details__container">
+            <div class="detail__details">
+                <div class="detail__brand">{{ shoe.brand }}</div>
+                <div class="details__count-title">
+                    <h3 class="detail__title">{{ shoe.title }}</h3>
+                    <div class="details__countdown-wrapper">
+                            {% if shoe.date_in_past %}
+                                Im released
+                            {% else %}
+                                <span class="detail_countdown">⏱️</span>
+                                <span class="details__dropping">DROPPING:</span>
+                            {{ shoe.releaseDate|naturaltime }}
+                            {% endif %}
+                    </div>
+                    <span>#{{ shoe.gender }}</span>
+                    {% if shoe.price %}
+                        <span>💲{{ shoe.price }}</span>
+                    {% else %}
+                    {% endif %}
+
+                </div>
+
+                {% if shoe.description %}
+                    <h4>The details</h4>
+                    <div>{{ shoe.description }}</div>
+                {% else %}
+                {% endif %}
+                <div class="details__specs">
+                    {% if shoe.shoespecs_set.all %}
+                        <h4>The Specs</h4>
+                    {% endif %}
+                    <ul class="details__specs">
+                        {% for spec in shoe.shoespecs_set.all %}
+                            <li>⚡{{ spec.spec }}</li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 
 
-{#use timeuntil builtin for countdown timer#}
+{# Use if else to displate a released button rather then coundown #}
