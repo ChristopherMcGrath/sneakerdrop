@@ -29,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = ['sneakerdrop-296901.uc.r.appspot.com',
-                 '127.0.0.1', 'www.sneakerdrop.io']
+                 '127.0.0.1', 'www.sneakerdrop.io', 'sneakerdrop.io']
 
 # Application definition
 
@@ -102,15 +102,15 @@ else:
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
     # DATABASES = {
     #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #         'HOST': '127.0.0.1',
-    #         'PORT': '5432',
-    #         'NAME': 'sneakerdrop',
-    #         'USER': 'christophermcgrath',
-    #         'PASSWORD': 'BybrUj*V-csh3n*K.-E',
+    #         'ENGINE': config('PROXY_ENGINE'),
+    #         'HOST': config('PROXY_HOST'),
+    #         'PORT': config('PROXY_PORT'),
+    #         'NAME': config('PROXY_NAME'),
+    #         'USER': config('PROXY_USER'),
+    #         'PASSWORD': config('PROXY_PASSWORD'),
     #     }
     # }
-    #
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -154,11 +154,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-# STATIC_URL = '/static_dev/'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-#     'static/js',
-# )
 
 # Google App Engine: set static root for local static files
 # https://cloud.google.com/appengine/docs/flexible/python/serving-static-files

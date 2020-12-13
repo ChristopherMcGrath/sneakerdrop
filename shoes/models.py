@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.utils import timezone
 
 
 # Create your models here.
@@ -34,12 +35,14 @@ class Shoe(models.Model):
         return self.brand + " - " + self.title
 
     @property
+    def date_in_past(self):
+        return date.today() >= self.releaseDate.date()
+
+    @property
     def first_image(self):
         return self.shoeimage_set.first()
 
-    @property
-    def date_in_past(self):
-        return date.today() > self.releaseDate.date()
+
 
 
 class ShoeSpecs(models.Model):

@@ -24,8 +24,11 @@
 }
 
 .detail__details {
-
   margin: 1.5rem auto;
+}
+
+.details__count-title {
+  margin-bottom: 3rem;
 }
 
 .detail__brand {
@@ -35,19 +38,23 @@
 
 .detail__title {
   font-size: 1.25rem;
+  margin: .5rem 0;
 }
 
 .details__dropping {
   color: $sneakerdrop-default;
-  font-weight: $text-weight-6;
+  font-weight: $text-weight-7;
 }
 
 
 .details__specs {
   list-style-type:none;
   padding-inline-start: 0 !important;
-  margin-top: 1rem;;
+  margin-top: 1rem;
+}
 
+.details__specs ul{
+  margin-top: 0;
 }
 
 .details__specs li{
@@ -58,7 +65,34 @@
   font-size: 1.5rem;
 }
 
+.details__countdown-wrapper {
+  margin: 1rem 0;
+}
+
+.details__get-it-url {
+  background-color: white;
+  color: #B01EFF;
+  border: 3px solid #B01EFF;
+  border-radius: .3rem;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight:$text-weight-7;
+}
+
+.details__get-it-url:hover,{
+  background: linear-gradient(86.31deg, #B01EFF -11.22%, #E1467C 119.12%);
+  color: white;
+}
+
+.detail__price {
+  font-size: 1.25rem;
+  font-weight:$text-weight-6;
+}
+
 .swiper-container {
   max-width: 2000px;
 }
+
 

@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load humanize %}
+{% load tz %}
 
-
+{% block detail_title_meta %}
+    <title>{{ shoe.brand }} - {{ shoe.title }} | SneakerDrop</title>
+{% endblock %}
 
 {% block content %}
     <!-- Swiper -->
@@ -24,32 +27,32 @@
             <div class="detail__details">
                 <div class="detail__brand">{{ shoe.brand }}</div>
                 <div class="details__count-title">
-                    <h3 class="detail__title">{{ shoe.title }}</h3>
+                    <h2 class="detail__title">{{ shoe.title }}</h2>
+                    {% if shoe.price %}
+                        <div class="detail__price">${{ shoe.price }}</div>
+                    {% else %}
+                    {% endif %}
                     <div class="details__countdown-wrapper">
                             {% if shoe.date_in_past %}
-                                Im released
+                                <a href="{{ shoe.get_it_url }}" class="details__get-it-url">Get it</a>
                             {% else %}
                                 <span class="detail_countdown">⏱️</span>
                                 <span class="details__dropping">DROPPING:</span>
-                            {{ shoe.releaseDate|naturaltime }}
+                                {{ shoe.releaseDate|timezone:"America/New_York" }}
+
                             {% endif %}
                     </div>
-                    <span>#{{ shoe.gender }}</span>
-                    {% if shoe.price %}
-                        <span>💲{{ shoe.price }}</span>
-                    {% else %}
-                    {% endif %}
 
                 </div>
 
                 {% if shoe.description %}
-                    <h4>The details</h4>
+                    <h3>The details</h3>
                     <div>{{ shoe.description }}</div>
                 {% else %}
                 {% endif %}
                 <div class="details__specs">
                     {% if shoe.shoespecs_set.all %}
-                        <h4>The Specs</h4>
+                        <h3>The Specs</h3>
                     {% endif %}
                     <ul class="details__specs">
                         {% for spec in shoe.shoespecs_set.all %}

@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
+{% block home_title_meta %}
+    <title>SneakerDrop - Get the latest sneaker releases</title>
+{% endblock %}
+
 {# to be released #}
 {% block content %}
     <div class="card__wrapper">
         <div>
             {% if shoes_release %}
-                <h2 class="card__drop-month"><b>Just Dropped</b></h2>
+                <h2 class="card__drop-month"><strong>Just Dropped</strong></h2>
             {% endif %}
             {% for shoe in shoes_release %}
                 <div class="card">
@@ -29,12 +33,21 @@
                     </div>
                 </div>
             {% endfor %}
+            {% if shoes_release %}
+            <div class="home__see-more-wrapper">
+                <a href="{% url 'released' %}" class="home__see-more">
+                    <span>See more</span>
+                    <span class="material-icons">arrow_right_alt</span>
+                </a>
+            </div>
+            {% endif %}
+
         </div>
 
         {% regroup shoes_not_released by releaseDate|date:"M" as shoes_not_released %}
         {% for date in shoes_not_released %}
             <div>
-                <h2 class="card__drop-month"><b>{{ date.grouper }} drop</b></h2>
+                <h2 class="card__drop-month"><strong>{{ date.grouper }} drop</strong></h2>
                 {% for shoe in date.list %}
                     <div class="card">
                         <div class="card__inner">
@@ -49,7 +62,7 @@
                                 <span id="myButton" class="material-icons-outlined card__share"
                                       onclick="CopyToClipboard('{{ shoe.id }}');return false;">link</span>
                                 <span id="{{ shoe.id }}"
-                                      class="sr-only">{{ request.build_absolute_uri }}shoes/{{ shoe.id }}</span>
+                                      class="sr-only">{{ request.build_absolute_uri }}sneakers/{{ shoe.id }}</span>
                             </div>
                             <div class="card__date" onclick="window.location= '{% url 'detail' shoe.id %}';">
                                 <span>{{ shoe.releaseDate | date:'jS' }}</span>
@@ -62,5 +75,3 @@
     </div>
 
 {% endblock %}
-
-{#use first of function for image#}

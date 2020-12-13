@@ -815,12 +815,6 @@ h3 {
     font-size: 1.25rem;
   }
 
-  .details__count-title {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: auto max-content;
-  }
-
   .details__countdown-wrapper {
     left: 0;
   }
@@ -859,16 +853,16 @@ body {
   margin-top: 3rem;
 }
 
-.footer__twitter-icon svg {
+.footer__twitter-icon {
   height: 24px;
   width: 24px;
-  padding-left: 0.3rem;
+  padding-left: 0.5rem;
 }
 
-.footer__instagram-icon svg {
+.footer__instagram-icon {
   height: 24px;
   width: 24px;
-  padding-right: 0.3rem;
+  padding-right: 0.5rem;
 }
 
 .footer_point-right, .footer__mail {
@@ -876,8 +870,8 @@ body {
 }
 
 .footer__social-icons {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .details__wrapper {
@@ -904,6 +898,10 @@ body {
   margin: 1.5rem auto;
 }
 
+.details__count-title {
+  margin-bottom: 3rem;
+}
+
 .detail__brand {
   font-size: 1rem;
   font-weight: 600;
@@ -911,17 +909,22 @@ body {
 
 .detail__title {
   font-size: 1.25rem;
+  margin: 0.5rem 0;
 }
 
 .details__dropping {
   color: #B01EFF;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .details__specs {
   list-style-type: none;
   padding-inline-start: 0 !important;
   margin-top: 1rem;
+}
+
+.details__specs ul {
+  margin-top: 0;
 }
 
 .details__specs li {
@@ -932,8 +935,49 @@ body {
   font-size: 1.5rem;
 }
 
+.details__countdown-wrapper {
+  margin: 1rem 0;
+}
+
+.details__get-it-url {
+  background-color: white;
+  color: #B01EFF;
+  border: 3px solid #B01EFF;
+  border-radius: 0.3rem;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.details__get-it-url:hover {
+  background: linear-gradient(86.31deg, #B01EFF -11.22%, #E1467C 119.12%);
+  color: white;
+}
+
+.detail__price {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
 .swiper-container {
   max-width: 2000px;
+}
+
+.home__see-more-wrapper {
+  display: grid;
+  grid-template-columns: auto;
+  margin: 0.5rem 0.25rem;
+}
+
+.home__see-more {
+  display: flex;
+  justify-self: end;
+}
+
+.home__see-more:hover {
+  border-color: #B01EFF;
 }
 
 body {

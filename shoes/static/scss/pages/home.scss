@@ -1,0 +1,14 @@
+.home__see-more-wrapper {
+  display: grid;
+  grid-template-columns: auto;
+  margin: .5rem .25rem;
+}
+
+.home__see-more {
+  display: flex;
+  justify-self: end;
+}
+
+.home__see-more:hover {
+    border-color: #B01EFF;
+}

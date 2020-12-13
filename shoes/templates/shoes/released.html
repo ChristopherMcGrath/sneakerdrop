@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block all_released %}
+    <div class="card__wrapper">
+        {% if shoes_released %}
+            <h2 class="card__drop-month"><strong>All Releases </strong>🎉</h2>
+        {% endif %}
+        {% for shoe in shoes_released %}
+            <div class="card">
+                <div class="card__inner">
+                    <img class="card__image" src=" {{ shoe.first_image.image.url }} "
+                         alt="{{ shoe.brand }} {{ shoe.title }} shoe"
+                         onclick="window.location= '{% url 'detail' shoe.id %}';">
+                    <div class="card__shoe-details">
+                        <span class="card__shoe-brand"
+                              onclick="window.location= '{% url 'detail' shoe.id %}';">{{ shoe.brand }}</span>
+                        <h3 class="shoe__shoe-title"
+                            onclick="window.location= '{% url 'detail' shoe.id %}';">{{ shoe.title }}</h3>
+                        <span id="myButton" class="material-icons-outlined card__share"
+                              onclick="CopyToClipboard('{{ shoe.id }}');return false;">link</span>
+                        <span id="{{ shoe.id }}"
+                              class="sr-only">{{ request.build_absolute_uri }}sneakers/{{ shoe.id }}</span>
+                    </div>
+                    <div class="card__to-details" onclick="window.location= '{% url 'detail' shoe.id %}';">
+                        <span class="material-icons">arrow_right_alt</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
